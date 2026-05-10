@@ -52,7 +52,7 @@ class FileEncryptorApp:
         self.root = tk.Tk()
         self.root.option_add("*TCombobox*Listbox.selectBackground", "#2563EB")
         self.root.option_add("*TCombobox*Listbox.selectForeground", "white")
-        self.root.title("File Encryptor")
+        self.root.title("CryptoApp")
         self.root.geometry("1250x750")
         self.root.minsize(1150, 700)
 
@@ -321,9 +321,9 @@ class FileEncryptorApp:
         title_box = ttk.Frame(header)
         title_box.pack(side="left", padx=(0, 15))
 
-        ttk.Label(title_box, text="File Encryptor", style="Title.TLabel").pack(anchor="w")
+        ttk.Label(title_box, text="CryptoApp", style="Title.TLabel").pack(anchor="w")
         ttk.Label(title_box,
-                  text="Secure classical & custom encryption with modern UI.",
+                  text="Secure file encryption using classical and custom cryptographic algorithms.",
                   style="Subtitle.TLabel").pack(anchor="w", pady=(4, 0))
 
         ttk.Button(header,
