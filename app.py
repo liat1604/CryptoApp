@@ -11,10 +11,7 @@ from ciphers import (
 )
 
 
-# ===========================================================
 # TOOLTIP
-# ===========================================================
-
 class ToolTip:
     def __init__(self, widget, text):
         self.widget = widget
@@ -43,10 +40,8 @@ class ToolTip:
             self.tip = None
 
 
-# ===========================================================
+ 
 # MAIN APPLICATION
-# ===========================================================
-
 class FileEncryptorApp:
     def __init__(self):
         self.root = tk.Tk()
@@ -55,40 +50,28 @@ class FileEncryptorApp:
         self.root.title("CryptoApp")
         self.root.geometry("1250x750")
         self.root.minsize(1150, 700)
-
         self.dark = False
         self.key_placeholder_active = True
-
         self.input_path = ""
         self.output_path = ""
-
         self.setup_light()
         self.setup_styles()
         self.build()
-
-    # -------------------------------------------------------
     # THEMES
-    # -------------------------------------------------------
-
     def setup_light(self):
         self.BG = "#F3F5F9"
         self.CARD = "#FAFBFC"
         self.TEXT = "#1F2937"
         self.MUTED = "#6B7280"
-
         # Softer, more professional blues
         self.ACCENT = "#1E40AF"
         self.ACCENT_HOVER = "#1D4ED8"
-
         # Softer preview blue
         self.PREVIEW_BG = "#F1F5FB"
-
         self.SUCCESS = "#16A34A"
         self.WARNING = "#D97706"
         self.ERROR = "#DC2626"
-
         self.PANEL_BORDER = "#D6DEE8"
-
     def setup_dark(self):
         self.BG = "#1E1E1E"
         self.CARD = "#2A2D2E"
@@ -101,28 +84,20 @@ class FileEncryptorApp:
         self.ERROR = "#F87171"
         self.PREVIEW_BG = "#1F2937"
         self.PANEL_BORDER = "#3A3D3E"
-
-    # -------------------------------------------------------
     # STYLES
-    # -------------------------------------------------------
-
     def setup_styles(self):
         style = ttk.Style()
         style.theme_use("clam")
-
         self.root.configure(bg=self.BG)
-
         style.configure("TFrame", background=self.BG)
         style.configure("Card.TFrame", background=self.CARD)
         style.configure("TLabel", background=self.BG, foreground=self.TEXT)
-
         style.configure(
             "Header.TLabel",
             background=self.CARD,
             foreground=self.TEXT,
             font=("Segoe UI", 10, "bold")
         )
-
         style.configure(
             "CardTitle.TLabel",
             background=self.CARD,
@@ -147,9 +122,6 @@ class FileEncryptorApp:
             background=self.CARD,
             foreground=self.TEXT
         )
-       
-       
-
         style.configure("Title.TLabel", font=("Segoe UI", 26, "bold"))
         style.configure("Subtitle.TLabel", font=("Segoe UI", 11), foreground=self.MUTED)
 
@@ -159,7 +131,6 @@ class FileEncryptorApp:
 
         field_bg = "#111827" if self.dark else "#F3F4F6"
         field_fg = "#F9FAFB" if self.dark else self.TEXT
-
         style.configure(
             "TEntry",
             fieldbackground=field_bg,
@@ -167,7 +138,6 @@ class FileEncryptorApp:
             insertcolor=field_fg,
             padding=7
         )
-
         style.configure(
             "TCombobox",
             fieldbackground=field_bg,
@@ -178,7 +148,6 @@ class FileEncryptorApp:
             arrowcolor=field_fg,
             padding=7
         )
-
         style.map(
             "TCombobox",
             fieldbackground=[
@@ -211,11 +180,8 @@ class FileEncryptorApp:
         style.configure("TProgressbar",
                         troughcolor="#E5E7EB" if not self.dark else "#444",
                         background=self.ACCENT)
-        
-        # =========================================
-        # CHECKBUTTON / RADIOBUTTON CLEANUP
-        # =========================================
 
+        # CHECKBUTTON / RADIOBUTTON CLEANUP        
         style.configure(
             "TRadiobutton",
             background=self.CARD,
@@ -224,13 +190,11 @@ class FileEncryptorApp:
             indicatordiameter=14,
             font=("Segoe UI", 10)
         )
-
         style.map(
             "TRadiobutton",
             background=[("active", self.CARD)],
             foreground=[("active", self.TEXT)]
         )
-
         style.configure(
             "TCheckbutton",
             background=self.CARD,
@@ -238,17 +202,13 @@ class FileEncryptorApp:
             indicatorcolor=self.ACCENT,
             font=("Segoe UI", 10)
         )
-
         style.map(
             "TCheckbutton",
             background=[("active", self.CARD)],
             foreground=[("active", self.TEXT)]
-        )
+        )  
 
-                # =========================================
         # NOTEBOOK / PREVIEW TABS
-        # =========================================
-
         tab_bg = "#374151" if self.dark else "#DCE6F7"
         tab_active = "#4B5563" if self.dark else "#C9D9F2"
 
@@ -257,7 +217,6 @@ class FileEncryptorApp:
             background=self.CARD,
             borderwidth=0
         )
-
         style.configure(
             "TNotebook.Tab",
             background=tab_bg,
@@ -265,7 +224,6 @@ class FileEncryptorApp:
             padding=(14, 8),
             font=("Segoe UI", 10, "bold")
         )
-
         style.map(
             "TNotebook.Tab",
             background=[
@@ -279,10 +237,8 @@ class FileEncryptorApp:
                 ("!selected", self.TEXT)
             ]
         )
-    # -------------------------------------------------------
+     
     # DARK MODE TOGGLE
-    # -------------------------------------------------------
-
     def toggle_dark(self):
         self.dark = not self.dark
         if self.dark:
@@ -293,9 +249,9 @@ class FileEncryptorApp:
         self.setup_styles()
         self.build()
 
-    # -------------------------------------------------------
+     
     # BUILD UI
-    # -------------------------------------------------------
+     
 
     def build(self):
         for w in self.root.winfo_children():
